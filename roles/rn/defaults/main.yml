@@ -1,0 +1,12 @@
+---
+rn_homebrew_brew_bin_path: "$HOMEBREW_PREFIX/bin"
+
+rn_shell_paths_file: "$HOME/.bash_profile"
+
+rn_shell_variables: []
+
+rn_shell_binaries: []
+
+rn_nvm_node_version: "--lts"
+
+

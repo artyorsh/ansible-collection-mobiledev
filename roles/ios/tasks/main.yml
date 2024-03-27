@@ -1,0 +1,9 @@
+---
+- name: "Install apps with homebrew"
+  ansible.builtin.include_tasks: "brew.yml"
+
+- name: "Configure RVM"
+  ansible.builtin.include_tasks: "rvm.yml"
+
+- name: "Configure shell"
+  ansible.builtin.include_tasks: "shell.yml"

@@ -1,0 +1,36 @@
+namespace: "artyorsh"
+
+name: "mobiledev"
+
+version: 1.0.0
+
+readme: "README.md"
+
+authors:
+- "Artur Yersh <mail@artyorsh.me>"
+
+description: "Collection of mobile development automation tools for Ansible"
+
+license:
+- "MIT"
+
+# A list of tags you want to associate with the collection for indexing/searching. A tag name has the same character
+# requirements as 'namespace' and 'name'
+tags:
+  - "mobile"
+  - "development"
+  - "ios"
+  - "android"
+  - "react-native"
+
+dependencies: {}
+
+repository: "https://github.com/artyorsh/ansible-collection-mobiledev"
+
+documentation: "https://github.com/artyorsh/ansible-collection-mobiledev"
+
+homepage:  "https://github.com/artyorsh/ansible-collection-mobiledev"
+
+issues: "https://github.com/artyorsh/ansible-collection-mobiledev/issues"
+
+build_ignore: []

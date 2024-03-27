@@ -1,0 +1,23 @@
+---
+- name: "Configure Android dev environment"
+  ansible.builtin.include_role:
+    name: "android"
+  vars:
+    android_homebrew_brew_bin_path: "{{ rn_homebrew_brew_bin_path }}"
+    android_shell_paths_file: "{{ rn_shell_paths_file }}"
+
+- name: "Configure iOS dev environment"
+  ansible.builtin.include_role:
+    name: "ios"
+  vars:
+    ios_homebrew_brew_bin_path: "{{ rn_homebrew_brew_bin_path }}"
+    ios_shell_paths_file: "{{ rn_shell_paths_file }}"
+
+- name: "Install apps with homebrew"
+  ansible.builtin.include_tasks: "brew.yml"
+
+- name: "Configure NVM"
+  ansible.builtin.include_tasks: "nvm.yml"
+
+- name: "Configure shell"
+  ansible.builtin.include_tasks: "shell.yml"

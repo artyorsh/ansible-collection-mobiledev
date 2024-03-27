@@ -1,0 +1,10 @@
+---
+ios_homebrew_brew_bin_path: "$HOMEBREW_PREFIX/bin"
+
+ios_shell_paths_file: "$HOME/.bash_profile"
+
+ios_shell_variables:
+  - { regexp: "export GEM_HOME=", line: "export GEM_HOME=\"$HOME/.gem\"" }
+
+ios_shell_binaries:
+  - "$HOME/.rvm/bin"

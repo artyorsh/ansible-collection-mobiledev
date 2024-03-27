@@ -1,0 +1,8 @@
+cask_args appdir: '~/Applications'
+
+tap 'homebrew/bundle'
+tap 'homebrew/cask'
+
+brew 'mas'
+cask 'minisim'
+mas 'Xcode', id: 497799835

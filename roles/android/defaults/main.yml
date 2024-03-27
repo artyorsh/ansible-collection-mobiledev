@@ -1,0 +1,16 @@
+---
+android_homebrew_brew_bin_path: "$HOMEBREW_PREFIX/bin"
+
+android_shell_paths_file: "$HOME/.bash_profile"
+
+android_shell_variables:
+  - { regexp: "export JAVA_HOME=", line: "export JAVA_HOME=$(/usr/libexec/java_home)" }
+  - { regexp: "export GRADLE_HOME=", line: "export GRADLE_HOME=$HOMEBREW_PREFIX/bin/gradle" }
+  - { regexp: "export ANDROID_HOME=", line: "export ANDROID_HOME=$HOMEBREW_PREFIX/share/android-sdk/tools/" }
+  - { regexp: "export ANDROID_NDK_HOME=", line: "export ANDROID_NDK_HOME=$HOMEBREW_PREFIX/share/android-ndk" }
+
+android_shell_binaries:
+  - "$JAVA_HOME/bin"
+  - "$GRADLE_HOME/bin"
+  - "$ANDROID_HOME/tools"
+  - "$ANDROID_HOME/tools/bin"
