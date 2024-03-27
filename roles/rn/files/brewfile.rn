@@ -1,0 +1,9 @@
+cask_args appdir: '~/Applications'
+
+tap 'homebrew/bundle'
+tap 'homebrew/cask'
+
+cask 'visual-studio-code'
+brew 'yarn'
+brew 'watchman'
+

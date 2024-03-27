@@ -1,0 +1,36 @@
+---
+
+- name: "Set role variables"
+  ansible.builtin.set_fact:
+    nvm_gh_repo: "nvm-sh/nvm"
+    nvm_bin: "$HOME/.nvm/nvm.sh"
+
+- name: "Check if nvm is already installed"
+  ansible.builtin.stat:
+    path: "{{ nvm_bin }}"
+  register: nvm_bin_stat
+
+- name: "Get latest nvm release version"
+  when: not nvm_bin_stat.stat.exists
+  ansible.builtin.uri:
+    url: "https://api.github.com/repos/{{ nvm_gh_repo }}/releases/latest"
+    return_content: true
+  register: nvm_release
+
+- name: "Install NVM"
+  when: not nvm_bin_stat.stat.exists
+  ansible.builtin.shell:
+    cmd: |
+      set -o pipefail
+      curl -o- https://raw.githubusercontent.com/{{ nvm_gh_repo }}/{{ nvm_release.json.tag_name }}/install.sh | bash
+
+# - name: "Install and configure node"
+#   when: not nvm_bin_stat.stat.exists
+#   ansible.builtin.shell:
+#     cmd: |
+#       $NVM_DIR/nvm.sh && $NVM_DIR/nvm.sh install {{ rn_nvm_node_version }} \
+#       $NVM_DIR/nvm.sh use {{ rn_nvm_node_version }}
+#     args:
+#       executable: "/bin/bash"
+#       chdir: "{{ ansible_env.HOME }}"
+#       creates: "{{ ansible_env.HOME }}/.nvm/versions/{{ item }}"

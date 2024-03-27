@@ -1,0 +1,15 @@
+---
+- name: "Export variables"
+  ansible.builtin.lineinfile:
+    dest: "{{ android_shell_paths_file }}"
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
+    state: "present"
+  with_items: "{{ android_shell_variables }}"
+
+- name: "Include binaries into PATH"
+  ansible.builtin.lineinfile:
+    dest: "{{ android_shell_paths_file }}"
+    line: "export PATH=$PATH:{{ item }}"
+    state: "present"
+  with_items: "{{ android_shell_binaries }}"

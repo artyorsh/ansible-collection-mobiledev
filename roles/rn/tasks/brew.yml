@@ -1,0 +1,13 @@
+---
+- name: "Set role variables"
+  ansible.builtin.set_fact:
+    brewfile_location: "$HOME/.brewfile.rn-dev"
+
+- name: "Link brewfile into home directory"
+  ansible.builtin.copy:
+    src: "files/brewfile.rn"
+    dest: "{{ brewfile_location }}"
+    mode: "0644"
+
+- name: "Install from Brewfile"
+  command: "{{ rn_homebrew_brew_bin_path }}/brew bundle --file={{ brewfile_location }}"

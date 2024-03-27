@@ -1,0 +1,15 @@
+---
+- name: "Export shell variables"
+  ansible.builtin.lineinfile:
+    dest: "{{ ios_shell_paths_file }}"
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
+    state: "present"
+  with_items: "{{ ios_shell_variables }}"
+
+- name: "Include binaries into PATH"
+  ansible.builtin.lineinfile:
+    dest: "{{ ios_shell_paths_file }}"
+    line: "export PATH=$PATH:{{ item }}"
+    state: "present"
+  with_items: "{{ ios_shell_binaries }}"
